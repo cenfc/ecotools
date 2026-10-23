@@ -1,4 +1,19 @@
-# NEWS - aquatools
+# NEWS - ecotools
+
+## 0.1.0 - 2026-10-23
+Fork depuis le package [aquatools](https://github.com/jbfagotfede39/aquatools/)
+
+### Ajouts
+- `chronique.tendance` : explicitation du paramètre `N` + nettoyage
+- `notification vocale` : création
+
+### Modifications
+- `DESCRIPTION` : mise à jour avec nouveau contexte
+- `README` : mise à jour avec nouveau contexte
+
+### Corrections
+- `chronique.compensation.barometrie` : correction d'une coquille
+- `tools-package` : mise à jour d'une balise plus utilisée
 
 ## 0.0.195 - 2026-07-16
 ### Ajouts

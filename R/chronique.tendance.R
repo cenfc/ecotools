@@ -3,7 +3,7 @@
 #' Cette fonction permet d'analyser les tendances d'évolution de chroniques de mesures (température, niveaux, etc.)
 #' @name chronique.tendance
 #' @param data Jeu de données
-#' @param N 
+#' @param N Nombre d'itération afin de juger de l'intensité de la tendance
 #' @keywords chronique
 #' @import tidyverse
 #' @export
@@ -13,17 +13,9 @@
 
 chronique.tendance <- function(
   data = data,
-  N=2
+  N = 2
 )
 {
-  
-  ##### -------------- A FAIRE -------------- #####
-  # 
-  # 
-  # -------------- A FAIRE -------------- #
-
-  
-  ##### Mise au format des données #####
 
   ##### Calcul de la tendance #####
 Analyse <-

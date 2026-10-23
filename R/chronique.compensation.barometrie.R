@@ -89,7 +89,7 @@ chronique.compensation.barometrie <- function(data,
     ## Identification de la colonne de barométrie ##
     baro_name <- data_v3 %>% select(contains("baro")) %>% names()
     
-    if(baro_name %>% length() > 1) stop(glue("Présence de plusieurs stations avec données barométriques : glue_collapse(baro_name, sep = ' ,', last = ' et ')")
+    if(baro_name %>% length() > 1) stop(glue("Présence de plusieurs stations avec données barométriques : glue_collapse(baro_name, sep = ' ,', last = ' et ')"))
     
     ## Éventuel complément des premières et dernières données de barométrie qui ne doivent pas être des NA
     # Identifier l'index des premières et dernières valeurs non-NA

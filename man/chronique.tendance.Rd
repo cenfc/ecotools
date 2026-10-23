@@ -8,6 +8,8 @@ chronique.tendance(data = data, N = 2)
 }
 \arguments{
 \item{data}{Jeu de données}
+
+\item{N}{Nombre d'itération afin de juger de l'intensité de la tendance}
 }
 \description{
 Cette fonction permet d'analyser les tendances d'évolution de chroniques de mesures (température, niveaux, etc.)

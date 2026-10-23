@@ -1,16 +1,16 @@
-Package: aquatools
-Title: Tools for freshwater managers
-Version: 0.0.195
+Package: ecotools
+Title: Tools for Natural Environment Managers
+Version: 0.1.0
 Authors@R: 
-    person("Jean-Baptiste", "Fagot", , "jean-baptiste.fagot@peche-jura.com", role = c("aut", "cre"))
-Maintainer: Jean-Baptiste Fagot <jean-baptiste.fagot@peche-jura.com>
-Description: aquatools contains multiple tools to treat French freshwater
+    person("Jean-Baptiste", "Fagot", , "jean.baptiste.fagot@cen-franchecomte.org", role = c("aut", "cre"))
+Maintainer: Jean-Baptiste Fagot <jean.baptiste.fagot@cen-franchecomte.org>
+Description: ecotools contains multiple tools to manage environmental data
     data.
 License: GNU GPL v3
-URL: https://github.com/jbfagotfede39/aquatools
-BugReports: https://github.com/jbfagotfede39/aquatools/issues
+URL: https://github.com/cenfc/ecotools
+BugReports: https://github.com/cenfc/ecotools/issues
 Depends:
-    R (>= 4.0.0)
+    R (>= 4.1.0)
 Imports:
     broom,
     checkmate,
@@ -72,4 +72,4 @@ Remotes:
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-Config/roxygen2/version: 8.0.0
+Config/roxygen2/version: 8.1.0

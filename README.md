@@ -1,11 +1,11 @@
 ## Résumé
-Le package `aquatools` offre de multiples outils de traitement de données relatives à la gestion et à l'étude des milieux aquatiques.
+Le package `ecotools` offre de multiples outils de traitement de données relatives à la gestion et à l'étude des milieux naturels.
 
 ## Installation
 Les commandes à utiliser pour installer le package sont les suivantes :
 ``` r
 install.packages("pak")
-pak::pak("jbfagotfede39/aquatools")
+pak::pak("cenfc/ecotools")
 ```
 
 ## Organisation
@@ -22,7 +22,10 @@ Les fonctions sont organisées avec des préfixes, permettant d'établir de gran
 La notice présentant présentant les capacités et l'utilisation des fonctions relatives aux chroniques est disponible à l'adresse https://jbfagotfede39.github.io/notice-thermie/.
 
 ## Recevoir de l'aide
-Si vous rencontrez un bug clair, merci de créer un ticket avec un exemple minimal reproductible sur [GitHub](https://github.com/jbfagotfede39/aquatools/issues).
+Si vous rencontrez un bug clair, merci de créer un ticket avec un exemple minimal reproductible sur [GitHub](https://github.com/cenfc/ecotools/issues).
 
 ## License
 [GNU GPL v3](https://www.r-project.org/Licenses/GPL-3)
+
+## Origine
+Ce package s'appuie, à son origine, sur le package [aquatools](https://github.com/jbfagotfede39/aquatools/)
