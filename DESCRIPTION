@@ -12,6 +12,7 @@ BugReports: https://github.com/cenfc/ecotools/issues
 Depends:
     R (>= 4.1.0)
 Imports:
+    beepr,
     broom,
     checkmate,
     cli,
@@ -69,7 +70,7 @@ Suggests:
     testthat
 Remotes: 
     colinfay/rgeoapi
+Config/roxygen2/version: 8.1.0
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-Config/roxygen2/version: 8.1.0

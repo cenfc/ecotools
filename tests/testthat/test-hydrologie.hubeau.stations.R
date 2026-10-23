@@ -1,5 +1,5 @@
 library(testthat)
-library(aquatools)
+library(ecotools)
 
 test_that("hydrologie.hubeau.stations format données en entrée", {
   expect_error(hydrologie.hubeau.stations(), "Aucun paramètre fourni")

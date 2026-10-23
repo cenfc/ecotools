@@ -1,5 +1,5 @@
 library(testthat)
-library(aquatools)
+library(ecotools)
 
 test_that("chronique.meteofrance.mesures format données", {
   expect_error(chronique.meteofrance.mesures("Horaire", "391", "2025-01-01T00:00:00Z", "2025-04-01T00:00:00Z", token), "Identifiant de station fourni au mauvais format : 8 chiffres nécessaires")
