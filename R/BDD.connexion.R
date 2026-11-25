@@ -12,6 +12,8 @@
 #' @export
 #' @examples
 #' bd_w <- BDD.connexion(dbname, hote, port, utilisateur, motdepasse)
+#' bd_w <- BDD.connexion(dbname, hote, port, ecotools::session_utilisateur(), motdepasse)
+#' bd_w <- BDD.connexion(dbname, hote, port, ecotools::session_utilisateur(), keyring::key_get(dbname, ecotools::session_utilisateur()))
 
 BDD.connexion <- function(
     dbname = NA_character_,
@@ -36,15 +38,15 @@ BDD.connexion <- function(
   if(is.na(motdepasse)) stop("Aucun motdepasse fourni")
   
   #### Calcul ####
-  bd_c <- RPostgreSQL::dbConnect(RPostgres::Postgres(),
-                                 dbname = dbname,
-                                 host = hote,
-                                 port = port,
-                                 user = utilisateur,
-                                 password = motdepasse,
-                                 base::list(sslmode = "require", connect_timeout = "10"),
-                                 service = NULL
-                                 )
+  bd_c <- dbConnect(RPostgres::Postgres(),
+                    dbname = dbname,
+                    host = hote,
+                    port = port,
+                    user = utilisateur,
+                    password = motdepasse,
+                    base::list(sslmode = "require", connect_timeout = "10"),
+                    service = NULL
+  )
   
   #### Sortie ####
   return(bd_c)

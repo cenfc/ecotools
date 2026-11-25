@@ -28,4 +28,6 @@ Cette fonction permet de charger la connexion vers la base de données du Web-PD
 }
 \examples{
 bd_w <- BDD.connexion(dbname, hote, port, utilisateur, motdepasse)
+bd_w <- BDD.connexion(dbname, hote, port, ecotools::session_utilisateur(), motdepasse)
+bd_w <- BDD.connexion(dbname, hote, port, ecotools::session_utilisateur(), keyring::key_get(dbname, ecotools::session_utilisateur()))
 }

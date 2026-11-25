@@ -1,5 +1,17 @@
 # NEWS - ecotools
 
+## 0.1.1 - 2026-11-25
+
+### Ajouts
+- `formatage_parametre` : création
+- `session_utilisateur` : création - Fixes cenfc/cenbfc#4
+- `validation_vide` : création
+
+### Modifications
+- `BDD.connexion` : 
+  * mise à jour de l'aide - Fixes cenfc/cenbfc#6
+  * suppression de la dépendance à `RPostgreSQL`
+
 ## 0.1.0 - 2026-10-23
 Fork depuis le package [aquatools](https://github.com/jbfagotfede39/aquatools/)
 
