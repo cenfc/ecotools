@@ -1,6 +1,6 @@
 Package: ecotools
 Title: Tools for Natural Environment Managers
-Version: 0.1.2
+Version: 0.1.4
 Authors@R: 
     person("Jean-Baptiste", "Fagot", , "jean.baptiste.fagot@cen-franchecomte.org", role = c("aut", "cre"))
 Maintainer: Jean-Baptiste Fagot <jean.baptiste.fagot@cen-franchecomte.org>

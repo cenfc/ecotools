@@ -1,5 +1,11 @@
 # NEWS - ecotools
 
+## 0.1.4 - 2026-11-25
+### Corrections
+- `PC.lac.profil` : 
+  * modification d'une dépendance
+  * suppression des caractères accentués
+
 ## 0.1.3 - 2026-11-25
 ### Corrections
 - `PC.figure.parametres` : 

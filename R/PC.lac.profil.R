@@ -6,9 +6,9 @@
 #' @param param Paramètre physico-chimique à représenter (O2mg, O2pourc, cond, ph, temp, redox, chlorophylles, phycocyanines, secchi)
 #' @param couleurs Choix des couleurs annuelles : \code{stratifie} par défault, \code{regulier} ou \code{aleatoire}
 #' @keywords physico-chimie
-#' @export
+#' @import dplyr
 #' @import tibble
-#' @import tidyverse
+#' @export
 #' @examples
 #' PC.lac.profil(PC, param = "O2mg")
 #' PC %>% PC.lac.profil(param = "redox")
@@ -63,7 +63,7 @@ PC.lac.profil <- function(
   # if(subset(PC, (pcmes_parametresandre == 1301)) %>% distinct(pcmes_date) %>% nrow() <= 8) gg <- gg + scale_color_manual(
   #   values = c("#D55E00", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#CC79A7", "#999999", "#0072B2"))
   gg <- gg + scale_color_manual(values = palette_annees)
-  gg <- gg + labs(x = "Profondeur (m)", y = expression(Temperature~(degree*C)), color = "Date") # Pour changer le titre
+  gg <- gg + labs(x = "Profondeur (m)", y = expression("Temp\u00e9rature"~(degree*C)), color = "Date") # Pour changer le titre
   }
   
   else if(param=="O2mg"){
@@ -73,7 +73,7 @@ PC.lac.profil <- function(
   # if(subset(PC, (pcmes_parametresandre == 1311)) %>% distinct(pcmes_date) %>% nrow() <= 8) gg <- gg + scale_color_manual(
   #   values = c("#D55E00", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#CC79A7", "#999999", "#0072B2"))
   gg <- gg + scale_color_manual(values = palette_annees)
-  gg <- gg + labs(x = "Profondeur (m)", y = expression(Oxygène~dissous~(mg~O[2]/L)), color = "Date") # Pour changer le titre
+  gg <- gg + labs(x = "Profondeur (m)", y = expression("Oxyg\u00e8ne dissous"~(mg~O[2]/L)), color = "Date") # Pour changer le titre
   }
 
   else if(param=="O2pourc"){
@@ -83,7 +83,7 @@ PC.lac.profil <- function(
   # if(subset(PC, (pcmes_parametresandre == 1312)) %>% distinct(pcmes_date) %>% nrow() <= 8) gg <- gg + scale_color_manual(
     # values = c("#D55E00", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#CC79A7", "#999999", "#0072B2"))
   gg <- gg + scale_color_manual(values = palette_annees)
-  gg <- gg + labs(x = "Profondeur (m)", y = expression(Oxygène~dissous~("%"~saturation~O[2]/L)), color = "Date") # Pour changer le titre
+  gg <- gg + labs(x = "Profondeur (m)", y = expression("Oxyg\u00e8ne dissous"~("%"~saturation~O[2]/L)), color = "Date") # Pour changer le titre
   gg <- gg + scale_y_continuous(breaks = c(0, 20, 40, 60, 80, 100, 120), minor_breaks = NULL)
   
   }
@@ -95,7 +95,7 @@ PC.lac.profil <- function(
   # if(subset(PC, (pcmes_parametresandre == 1303)) %>% distinct(pcmes_date) %>% nrow() <= 8) gg <- gg + scale_color_manual(
     # values = c("#D55E00", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#CC79A7", "#999999", "#0072B2"))
   gg <- gg + scale_color_manual(values = palette_annees)
-  gg <- gg + labs(x = "Profondeur (m)", y = expression(Conductivite~corrigee~à~25~degree*C~(paste(mu,S))), color = "Date") # Pour changer le titre
+  gg <- gg + labs(x = "Profondeur (m)", y = expression("Conductivit\u00e9 corrig\u00e9e \u00e0 25 \u00b0C"~(mu*S/cm)), color = "Date") # Pour changer le titre
   }
   
   else if(param=="ph"){
@@ -115,7 +115,7 @@ PC.lac.profil <- function(
     # if(subset(PC, (pcmes_parametresandre == 1330)) %>% distinct(pcmes_date) %>% nrow() <= 8) gg <- gg + scale_color_manual(
       # values = c("#D55E00", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#CC79A7", "#999999", "#0072B2"))
     gg <- gg + scale_color_manual(values = palette_annees)
-    gg <- gg + labs(x = "Profondeur (m)", y = expression(paste("Potentiel d'oxydo-réduction (mV)")), color = "Date") # Pour changer le titre
+    gg <- gg + labs(x = "Profondeur (m)", y = expression("Potentiel d'oxydo-r\u00e9duction (mV)"), color = "Date") # Pour changer le titre
   }  
   
   else if(param=="chlorophylles"){
