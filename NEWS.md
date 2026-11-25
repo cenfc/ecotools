@@ -1,5 +1,12 @@
 # NEWS - ecotools
 
+## 0.1.3 - 2026-11-25
+### Corrections
+- `PC.figure.parametres` : 
+  * modification d'une dépendance
+  * modification d'un test de concordance des formats de données d'entrée
+  * suppression des caractères accentués
+
 ## 0.1.2 - 2026-11-25
 ### Corrections
 - Corrections générales de déclaration du package

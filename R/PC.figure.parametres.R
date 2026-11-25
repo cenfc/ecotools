@@ -5,9 +5,9 @@
 #' @param data Data.frame issu de la fonction PC.contexte()
 #' @param typefigure Type de figure qui est à paramétriser : \code{valeurs} (par défault)
 #' @keywords physico-chimie
+#' @import dplyr
 #' @import glue
 #' @import stringr
-#' @import tidyverse
 #' @export
 #' @examples
 #' data %>% PC.contexte() %>% PC.figure.parametres()
@@ -38,7 +38,7 @@ PC.figure.parametres <- function(
                                                                                                                                                                                                                                                                                                                           "tbl", "data.frame"))
   
   #### Tests ####
-  if(any(names(data) == names(contextereference)) == FALSE) stop("Les données d'entrée ne sont pas au format de sortie de PC.contexte")
+  if(!all(names(contextereference) %in% names(data))) stop("Les données d'entrée ne sont pas au format de sortie de PC.contexte")
   if(data$n_typemesure != 1) stop("Plusieurs pcmes_parametrenom au sein du jeu de données")
 
   #### Création des objets vides pour tests ultérieurs ####
@@ -65,10 +65,10 @@ PC.figure.parametres <- function(
     }
   }
   
-  if(typemesure == "Conductivité à 25°C"){
+  if(typemesure == "Conductivit\u00e9 \u00e0 25\u00b0C"){
     if(typefigure == "valeurs"){
-      legende_y <- expression(Conductivite~corrigee~à~25~degree*C~(paste(mu,S)))
-      legende_titre <- expression(Conductivite~corrigee~à~25~degree*C~(paste(mu,S)))
+      legende_y <- expression("Conductivit\u00e9 corrig\u00e9e \u00e0 25 \u00b0C"~(mu*S/cm))
+      legende_titre <-  expression("Conductivit\u00e9 corrig\u00e9e \u00e0 25 \u00b0C"~(mu*S/cm))
       typemesure_titre_sortie <- "_conductivite_"
     }
   }  
@@ -91,16 +91,16 @@ PC.figure.parametres <- function(
   
   if(typemesure == "Oxygène dissous"){
     if(typefigure == "valeurs"){
-      legende_y <- expression(Oxygène~dissous~(mg~O[2]/L))
-      legende_titre <- expression(Oxygène~dissous~(mg~O[2]/L))
+      legende_y <- expression("Oxyg\u00e8ne dissous"~(mg~O[2]/L))
+      legende_titre <- expression("Oxyg\u00e8ne dissous"~(mg~O[2]/L))
       typemesure_titre_sortie <- "_oxygénation-conc_"
     }
   }
   
   if(typemesure == "Oxygène dissous (saturation)"){
     if(typefigure == "valeurs"){
-      legende_y <- expression(Oxygène~dissous~("%"~saturation~O[2]/L))
-      legende_titre <- expression(Oxygène~dissous~("%"~saturation~O[2]/L))
+      legende_y <- expression("Oxyg\u00e8ne dissous"~("%"~saturation~O[2]/L))
+      legende_titre <- expression("Oxyg\u00e8ne dissous"~("%"~saturation~O[2]/L))
       typemesure_titre_sortie <- "_oxygénation-sat_"
     }
   }
@@ -123,16 +123,16 @@ PC.figure.parametres <- function(
   
   if(typemesure == "Potentiel d’oxydo-réduction"){
     if(typefigure == "valeurs"){
-      legende_y <- expression(paste("Potentiel d'oxydo-réduction (mV)"))
-      legende_titre <- expression(paste("Potentiel d'oxydo-réduction (mV)"))
+      legende_y <- expression("Potentiel d'oxydo-r\u00e9duction (mV)")
+      legende_titre <- expression("Potentiel d'oxydo-r\u00e9duction (mV)")
       typemesure_titre_sortie <- "_redox_"
     }
   }
 
   if(typemesure == "Température"){
     if(typefigure == "valeurs"){
-      legende_y <- expression(Temperature~(degree*C))
-      legende_titre <- expression(Temperature~(degree*C))
+      legende_y <- expression("Temp\u00e9rature"~(degree*C))
+      legende_titre <- expression("Temp\u00e9rature"~(degree*C))
       typemesure_titre_sortie <- "_thermie_"
     }
   }
