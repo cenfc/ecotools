@@ -1,7 +1,12 @@
 # NEWS - ecotools
 
-## 0.1.1 - 2026-11-25
+## 0.1.2 - 2026-11-25
+### Corrections
+- Corrections générales de déclaration du package
+- `BDD.connexion` : correctif de la description
+- `PC.conductivite.25degres` : suppression des caractères accentués
 
+## 0.1.1 - 2026-11-25
 ### Ajouts
 - `formatage_parametre` : création
 - `session_utilisateur` : création - Fixes cenfc/cenbfc#4

@@ -7,10 +7,12 @@
 PC.conductivite.25degres(data)
 }
 \arguments{
-\item{data}{Jeu de données (contenant une colonne Thermie et une colonne Conductivité)}
+\item{data}{Jeu de données (contenant une colonne Thermie et une colonne Conductivite)}
 }
 \description{
-Cette fonction permet de corriger (correction de température non linéaire) des conductivité vers des conductivités corrigées à 25°C au sens des normes ISO/DIN 7888 ou AFNOR NF en 2788
+Cette fonction permet de corriger (correction de température non linéaire)
+des conductivités vers des conductivités corrigées à 25°C au sens des normes
+ISO/DIN 7888 ou AFNOR NF EN 27888
 }
 \examples{
 PC.conductivite.25degres(data)

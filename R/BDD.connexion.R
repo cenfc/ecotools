@@ -1,6 +1,6 @@
-#' Chargement de la base de données Web-PDPG
+#' Chargement d'une connexion à une base de données
 #'
-#' Cette fonction permet de charger la connexion vers la base de données du Web-PDPG
+#' Cette fonction permet de charger la connexion vers une base de données
 #' @name BDD.connexion
 #' @param dbname Nom de la base de données
 #' @param hote Hôte de la base de données

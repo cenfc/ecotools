@@ -2,7 +2,7 @@
 % Please edit documentation in R/BDD.connexion.R
 \name{BDD.connexion}
 \alias{BDD.connexion}
-\title{Chargement de la base de données Web-PDPG}
+\title{Chargement d'une connexion à une base de données}
 \usage{
 BDD.connexion(
   dbname = NA_character_,
@@ -24,7 +24,7 @@ BDD.connexion(
 \item{motdepasse}{Mot de passe du portefeuille}
 }
 \description{
-Cette fonction permet de charger la connexion vers la base de données du Web-PDPG
+Cette fonction permet de charger la connexion vers une base de données
 }
 \examples{
 bd_w <- BDD.connexion(dbname, hote, port, utilisateur, motdepasse)

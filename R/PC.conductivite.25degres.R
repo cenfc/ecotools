@@ -1,8 +1,10 @@
 #' Conductivité corrigée à 25°C
 #'
-#' Cette fonction permet de corriger (correction de température non linéaire) des conductivité vers des conductivités corrigées à 25°C au sens des normes ISO/DIN 7888 ou AFNOR NF en 2788
+#' Cette fonction permet de corriger (correction de température non linéaire)
+#' des conductivités vers des conductivités corrigées à 25°C au sens des normes
+#' ISO/DIN 7888 ou AFNOR NF EN 27888
 #' @name PC.conductivite.25degres
-#' @param data Jeu de données (contenant une colonne Thermie et une colonne Conductivité)
+#' @param data Jeu de données (contenant une colonne Thermie et une colonne Conductivite)
 #' @keywords Physico-chimie
 #' @import tidyverse
 #' @export
@@ -22,7 +24,7 @@ PC.conductivite.25degres <- function(data)
     left_join(facteur_conversion_conductivite %>% 
                 mutate(Thermie = as.character(Thermie)), 
               join_by(Thermie_arrondie == "Thermie")) %>% 
-    mutate(Conductivité_25_degrés = round(as.numeric(Conductivité) * coefficient, 0)) %>%
+    mutate(Conductivite_25_degres = round(as.numeric(Conductivite) * coefficient, 0)) %>%
     dplyr::select(-coefficient)
   
   #### Sortie ####

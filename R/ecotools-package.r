@@ -1,5 +1,6 @@
-#' ecotools.
+#' ecotools: Tools for Natural Environment Managers
 #'
-#' @name ecotools
-#' @docType _PACKAGE
-NULL
+#' ecotools contains multiple tools to manage environmental data.
+#'
+#' @keywords internal
+"_PACKAGE"
