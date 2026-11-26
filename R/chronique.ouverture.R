@@ -214,7 +214,7 @@ dataaimporter <-
   if(typecapteur == "Diver"){
     dataaimporter <- 
       read_csv2(Localisation, skip = 54, col_names = c("Date","Piézométrie", "Thermie")) %>% 
-      filter(Piézométrie != 4133.6) %>% # Car fin de chronique remplie avec cette valeur
+      filter(`Piézométrie` != 4133.6) %>% # Car fin de chronique remplie avec cette valeur
       filter(Thermie != 193.35) %>% # Car fin de chronique remplie avec cette valeur
       mutate(Date = ymd_hms(Date)) %>%
       mutate(Heure = format(Date, format="%H:%M:%S")) %>% 
@@ -229,52 +229,52 @@ dataaimporter <-
     dataaimporter <-
       dataaimporter %>% 
       mutate(Thermie = as.numeric(sub(",", ".", Thermie))) %>% 
-      mutate(Piézométrie = as.numeric(sub(",", ".", Piézométrie))) %>% 
+      mutate(`Piézométrie` = as.numeric(sub(",", ".", `Piézométrie`))) %>% 
       {if(typedate == "dmy") mutate(., Date = as.character(format(dmy(Date), format="%Y-%m-%d"))) else .} %>% 
       {if(typedate == "dmy_hms") mutate(., Date = dmy_hms(Date)) else .} %>%
       {if(typedate == "ymd_hms") mutate(., Date = ymd_hms(Date)) else .} %>%
       {if(grepl("ymd_hms|dmy_hms", typedate)) mutate(., Heure = format(Date, format="%H:%M:%S")) else .} %>%
       {if(grepl("ymd_hms|dmy_hms", typedate)) mutate(., Date = format(Date, format="%Y-%m-%d")) else .} %>%
       mutate(Date = ymd(Date)) %>% 
-      dplyr::select(Date, Heure, Piézométrie, Thermie)
+      dplyr::select(Date, Heure, `Piézométrie`, Thermie)
     
   }
   if(typecapteur == "VuSitu"){
     dataaimporter <- 
       read_csv2(Localisation, skip = 1, col_names = c("Date","Pression","Thermie", "Piézométrie"), col_types = "cccc") %>%
       mutate(Thermie = as.numeric(sub(",", ".", Thermie))) %>% 
-      mutate(Piézométrie = as.numeric(sub(",", ".", Piézométrie))) %>% 
+      mutate(`Piézométrie` = as.numeric(sub(",", ".", `Piézométrie`))) %>% 
       mutate(Date = ymd_hms(Date)) %>%
       mutate(Heure = format(Date, format="%H:%M:%S")) %>% 
       mutate(Datefine = Date) %>% 
       mutate(Date = ymd(format(Date, format="%Y-%m-%d"))) %>% 
-      dplyr::select(Date, Heure, Piézométrie, Thermie)
+      dplyr::select(Date, Heure, `Piézométrie`, Thermie)
   }
   if(typecapteur == "RuggedTROLL"){
     dataaimporter <- 
       read_csv2(Localisation, skip = 70, col_names = c("Date", "Heure", "Seconde", "Thermie", "Profondeur", "Piézométrie"), col_types = "cccccc") %>%
       mutate(Thermie = as.numeric(sub(",", ".", Thermie))) %>% 
-      mutate(Piézométrie = as.numeric(sub(",", ".", Piézométrie))) %>% 
+      mutate(`Piézométrie` = as.numeric(sub(",", ".", `Piézométrie`))) %>% 
       mutate(Date = ymd(Date)) %>%
-      dplyr::select(Date, Heure, Piézométrie, Thermie)
+      dplyr::select(Date, Heure, `Piézométrie`, Thermie)
   }
   if(typecapteur == "Aquaread LeveLine"){ # très proche de `VuSitu`
     dataaimporter <- 
       read_tsv(Localisation, skip = 4, col_names = c("Date", "Piézométrie", "Thermie"), col_types = "ccc") %>%
       mutate(Thermie = as.numeric(sub(",", ".", Thermie))) %>% 
-      mutate(Piézométrie = as.numeric(sub(",", ".", Piézométrie))) %>% 
+      mutate(`Piézométrie` = as.numeric(sub(",", ".", `Piézométrie`))) %>% 
       mutate(Date = dmy_hms(Date)) %>%
       mutate(Heure = format(Date, format="%H:%M:%S")) %>% 
       mutate(Datefine = Date) %>% 
       mutate(Date = ymd(format(Date, format="%Y-%m-%d"))) %>% 
-      dplyr::select(Date, Heure, Piézométrie, Thermie)
+      dplyr::select(Date, Heure, `Piézométrie`, Thermie)
   }
   
   dataaimporter <- 
     dataaimporter %>% 
     filter(!is.na(Thermie)) %>% 
     mutate(Heure = as.character(Heure)) %>% 
-    tidyr::gather(typemesure, Valeur, Piézométrie:Thermie) %>% 
+    tidyr::gather(typemesure, Valeur, `Piézométrie`:Thermie) %>% 
     mutate(unite = ifelse(typemesure == "Thermie", "°C", NA_character_)) %>% 
     mutate(unite = ifelse(typemesure == "Piézométrie" & (typecapteur == "Hobo" | typecapteur == "RuggedTROLL" | typecapteur == "Aquaread LeveLine"), "kPa", unite)) %>% 
     mutate(unite = ifelse(typemesure == "Piézométrie" & (typecapteur == "Diver" | typecapteur == "VuSitu"), "cm H2O", unite)) %>% 
@@ -666,7 +666,7 @@ dataaimporter <-
           Date = dmy(Date),
           Heure = format(Heure, format="%H:%M:%S")
         ) %>% 
-        select(Date, Heure, `Niveau de batterie`, Barométrie, `Pression piézométrique`, `Thermie piézométrique`, `Piézométrie NGF`)
+        select(Date, Heure, `Niveau de batterie`, `Barométrie`, `Pression piézométrique`, `Thermie piézométrique`, `Piézométrie NGF`)
       
       # Transformation au format long
       dataaimporter <- 

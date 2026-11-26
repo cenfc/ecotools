@@ -53,9 +53,9 @@ hydrologie.enquetedeau <- function(
     {if(formatage == TRUE) rename(., station = `Nom du point d'observation`) else .} %>% 
     {if(formatage == TRUE) rename(., commune_libelle = Commune) else .} %>% 
     {if(formatage == TRUE) mutate(., commune_insee = as.numeric(`Code Commune`)) else .} %>%  
-    {if(formatage == TRUE) rename(., departement_libelle = Département) else .} %>% 
+    {if(formatage == TRUE) rename(., departement_libelle = `Département`) else .} %>% 
     {if(formatage == TRUE) mutate(., departement_insee = as.numeric(`Code département`)) else .} %>% 
-    {if(formatage == TRUE) rename(., region_libelle = Région) else .} %>% 
+    {if(formatage == TRUE) rename(., region_libelle = `Région`) else .} %>% 
     {if(formatage == TRUE) rename(., region_insee = `Code Région`) else .} %>% 
     {if(formatage == TRUE) rename(., bassin_sdage = Bassin) else .} %>% 
     {if(formatage == TRUE) rename(., milieu_saisi = `Nom usuel du cours d'eau saisi`) else .} %>% 

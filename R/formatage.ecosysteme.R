@@ -44,7 +44,7 @@ if(Operation == "Expansion"){
     rename(!!ColonneEntree := coderhj) %>% 
     rename(coderhj := coderhj2) %>% 
     left_join(formatage.abreviation(thematique = "Écosystème", formatage = "Propre"), by = c("coderhj" = "Abréviation")) %>% 
-    rename(Sortie = Définition)
+    rename(Sortie = `Définition`)
   
   #### Test de complétude ####
   test <- data %>% dplyr::filter(is.na(Sortie))
@@ -73,7 +73,7 @@ if(Operation == "Simplification"){
   
   DataRef <- 
     formatage.abreviation(thematique = "Écosystème", formatage = "Propre") %>% 
-    mutate(definition = str_to_lower(Définition))
+    mutate(definition = str_to_lower(`Définition`))
   
   data <-
     data %>% 
@@ -85,8 +85,8 @@ if(Operation == "Simplification"){
   #### Exceptions manuelles ####
   # data <-
   #   data %>%
-  #   dplyr::filter(is.na(Abréviation)) %>% 
-  #   dplyr::select(-(Abréviation:Définition)) %>% 
+  #   dplyr::filter(is.na(`Abréviation`)) %>% 
+  #   dplyr::select(-(`Abréviation`:`Définition`)) %>% 
   #   mutate(definitionoriginale = case_when(
   #     grepl("Abbaye", definitionoriginale) ~ "Lac de l'Abbaye",
   #     grepl("Antre", definitionoriginale) ~ "Lac d'Antre",
@@ -98,7 +98,7 @@ if(Operation == "Simplification"){
   #   mutate(definitionsale = str_to_lower(definitionoriginale)) %>% 
   #   left_join(DataRef, by = c("definitionsale" = "definition")) %>% 
   #   dplyr::select(-definitionsale) %>% 
-  #   dplyr::union(data %>% dplyr::filter(!is.na(Abréviation))) # Ne fonctionne pour l'instant pas avec les entrées géographiques -> union impossible
+  #   dplyr::union(data %>% dplyr::filter(!is.na(`Abréviation`))) # Ne fonctionne pour l'instant pas avec les entrées géographiques -> union impossible
 
   #### Exceptions manuelles ####
 # data[str_detect(data, "bellefontaine")] <- "BEL"
@@ -143,14 +143,14 @@ if(Operation == "Simplification"){
 # data[str_detect(data, "vouglans")] <- "VOU"
 
   #### Test de complétude ####
-test <- data %>% dplyr::filter(is.na(Abréviation))
+test <- data %>% dplyr::filter(is.na(`Abréviation`))
 if(nrow(test) != 0) warning(paste0("Présence d'écosystème(s) impossible(s) à simplifier : "), glue::glue_collapse(unique(test$definitionoriginale), ", ", last = " et "))
 
   #### Renommage final ####
-  if(ColonneEntree == ColonneSortie){data <- data %>% dplyr::select(-definitionoriginale) %>% dplyr::select(-matches(ColonneEntree)) %>% rename(!!ColonneSortie := Abréviation)}
+  if(ColonneEntree == ColonneSortie){data <- data %>% dplyr::select(-definitionoriginale) %>% dplyr::select(-matches(ColonneEntree)) %>% rename(!!ColonneSortie := `Abréviation`)}
   if(ColonneEntree != ColonneSortie){
     if(ColonneSortie %in% colnames(data) == TRUE){data <- data %>% dplyr::select(-matches(ColonneSortie))} # Attention l'ordre de ces deux étapes est important, car on fait disparaître ColonneSortie qui est donc ensuite généré car absent
-    if(!(ColonneSortie %in% colnames(data))){data <- data %>% rename(!!ColonneEntree := definitionoriginale, !!ColonneSortie := Abréviation)} # Attention l'ordre de ces deux étapes est important
+    if(!(ColonneSortie %in% colnames(data))){data <- data %>% rename(!!ColonneEntree := definitionoriginale, !!ColonneSortie := `Abréviation`)} # Attention l'ordre de ces deux étapes est important
   }
   
   #### Ré-ordonnancement ####

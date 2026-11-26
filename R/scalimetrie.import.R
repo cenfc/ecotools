@@ -24,7 +24,7 @@ scalimetrie.import <- function(
   data <- 
     read_excel(file, skip = 35) %>%
     mutate(Name = filename) %>% # Ajouter le nom du fichier dans la colonne Name
-    mutate(Length_μm = as.numeric(Length_μm))
+    mutate(Length_um = as.numeric(Length_um))
   
   #### Nettoyage & reformatage ####
   # Retourner les valeurs mal formées si elles existent

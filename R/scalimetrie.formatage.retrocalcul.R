@@ -30,9 +30,9 @@ scalimetrie.formatage.retrocalcul <- function(
     select(id:age) %>% 
     select(-sexe) %>% 
     left_join(mesures %>% 
-                # select(id, id_poissons, Length_μm) %>% 
-                # select(id, Length_μm) %>% 
-                select(id:Length_μm) %>% 
+                # select(id, id_poissons, Length_um) %>% 
+                # select(id, Length_um`) %>% 
+                select(id:Length_um) %>% 
                 select(-contains("id_poissons")) %>% 
                 mutate(id = as.numeric(id)), 
               join_by(id))
@@ -42,17 +42,17 @@ scalimetrie.formatage.retrocalcul <- function(
     # Calcul de la distance réelle entre le centre de l'écaille et le marquage
     group_by(id, replicat) %>%
     mutate(
-      Length_cumul_μm = if_else(
+      Length_cumul_um = if_else(
         row_number() == 1,
-        Length_μm, # La première ligne reste inchangée
-        cumsum(Length_μm) # Calcul cumulatif de Length_μm
+        Length_um, # La première ligne reste inchangée
+        cumsum(Length_um) # Calcul cumulatif de Length_μm
       )
     ) %>%
     ungroup() %>%
     group_by(id, replicat) %>%
-    mutate(total_length_μm = max(Length_cumul_μm)) %>% 
+    mutate(total_length_um = max(Length_cumul_um)) %>% 
     ungroup() %>%
-    select(-Length_μm)
+    select(-Length_um)
   
   data_sortie_v2_nb <- 
     data_sortie_v2 %>% 
@@ -67,23 +67,23 @@ scalimetrie.formatage.retrocalcul <- function(
   
   data_sortie_v3 <-
     data_sortie_v2 %>% 
-    filter(total_length_μm != Length_cumul_μm) %>% 
+    filter(total_length_um != Length_cumul_um) %>% 
     # Ajout de suffixe dans les valeurs de la colonne "type" pour le format large
     group_by(id, replicat) %>%
     mutate(type = paste0(type, "_position_", row_number())) %>% # Ajouter les positions
     ungroup() %>% 
     # Transformation en format large et ajout de la colonne "total"
     pivot_wider(
-      names_from = type, # Utiliser les valeurs de `type` comme noms de colonnes
-      values_from = Length_cumul_μm # Utiliser les valeurs de `Length_cumul_μm` comme contenu
+      names_from = type, # Utiliser les valeurs de type comme noms de colonnes
+      values_from = Length_cumul_um # Utiliser les valeurs de Length_cumul_um comme contenu
     ) %>%
-    select(id, contains("id_poissons"), espece, taille, poids, age, replicat, total_length_μm, starts_with("mesures")) %>% 
+    select(id, contains("id_poissons"), espece, taille, poids, age, replicat, total_length_um, starts_with("mesures")) %>% 
     # Changement des noms de colonnes
     rename_with(
       .cols = starts_with("mesures_position"),
       .fn = ~ gsub("mesures_position_(\\d+)", "rad\\1", .x)
     ) %>%
-    rename(radcap = total_length_μm, 
+    rename(radcap = total_length_um, 
            agecap = age, 
            lencap = taille) 
   

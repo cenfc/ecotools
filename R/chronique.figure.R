@@ -153,22 +153,22 @@ if(typemesure == "Thermie" | typemesure == "Thermie barométrique" | typemesure 
 if(typemesure == "Barométrie"){
   legendeY = "Pression atmosphérique (kPa)"
   legendeTitre = "Barométrie :"
-  typemesureTitreSortie = "_barométrie_"
+  typemesureTitreSortie = "_barometrie_"
   }
 if(typemesure == "Piézométrie" | typemesure == "Piézométrie brute" | typemesure == "Piézométrie compensée"  | typemesure == "Piézométrie calée"){
   legendeY = "Hauteur d'eau (cm)"
   legendeTitre = "Piézométrie :"
-  typemesureTitreSortie = "_piézométrie_"
+  typemesureTitreSortie = "_piezometrie_"
 }
 if(typemesure == "Piézométrie NGF"){
   legendeY = "Hauteur d'eau (NGF)"
   legendeTitre = "Piézométrie :"
-  typemesureTitreSortie = "_piézométrie_"
+  typemesureTitreSortie = "_piezometrie_"
 }
 if(typemesure == "Oxygénation"){
-  legendeY = expression(Oxygene~dissous~(mg~O[2]/L))
+  legendeY = expression("Oxygène dissous"~(mg~O[2]/L))
   legendeTitre = "Oxygénation :"
-  typemesureTitreSortie = "_oxygénation_"
+  typemesureTitreSortie = "_oxygenation_"
   }
 if(typemesure == "Chlorophylle a" | typemesure == "Chlorophylle_a"){
   legendeY = "Chlorophylle a (ug/L)"
@@ -178,14 +178,14 @@ if(typemesure == "Chlorophylle a" | typemesure == "Chlorophylle_a"){
   typemesureTitreSortie = "_chla_"
   }
 if(typemesure == "Hydrologie"){
-  legendeY = expression(Débit~(m^3/s))
+  legendeY = expression("Débit"~(m^3/s))
   legendeTitre = "Hydrologie :"
   typemesureTitreSortie = "_hydrologie_"
 }
 if(typemesure == "Pluviométrie"){
-  legendeY = expression(Précipitations~(L/m^2))
+  legendeY = expression("Précipitations"~(L/m^2))
   legendeTitre = "Pluviométrie :"
-  typemesureTitreSortie = "_pluviométrie_"
+  typemesureTitreSortie = "_pluviometrie_"
 }
   
 #### Palette ####

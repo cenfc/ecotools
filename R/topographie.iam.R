@@ -165,7 +165,7 @@ topographie.iam <- function(
     prop_substrats %>% 
     mutate(prop = surface/surface_totale) %>% 
     left_join(iam_cotation %>% select(-description, -groupe, -particularites), join_by(sub_tphab_valeur_principale == habitat)) %>% 
-    mutate(iam_note = prop*attractivité_iam, .after = attractivité_iam) %>% 
+    mutate(iam_note = prop*attractivite_iam, .after = attractivite_iam) %>% 
     mutate(isca_note = prop*attractivite_isca, .after = attractivite_isca)
   iam_obs <- iam_isca_calcul %>% units::drop_units() %>% summarise(iam_obs = sum(iam_note)) %>% pull(iam_obs) * bonus * var_substrats * var_vitesses * var_hauteurs
   iam_obs <- round(iam_obs, 0)

@@ -1,23 +1,35 @@
 # NEWS - ecotools
 
+## 0.1.5 - 2026-11-26
+### Corrections
+- `chronique.figure` : suppression des caractères accentués illicites
+- `chronique.figure.interannuelle` : suppression des caractères accentués illicites
+- `chronique.ouverture` : suppression des caractères accentués illicites
+- `formatage.ecosysteme` : suppression des caractères accentués illicites
+- `hydrologie.enquetedeau` : suppression des caractères accentués illicites
+- `iam_cotation` : suppression des caractères accentués illicites
+- `scalimetrie.formatage.retrocalcul` : suppression des caractères accentués illicites
+- `scalimetrie.import` : suppression des caractères accentués illicites
+- `topographie.iam` : suppression des caractères accentués illicites
+
 ## 0.1.4 - 2026-11-25
 ### Corrections
 - `PC.lac.profil` : 
   * modification d'une dépendance
-  * suppression des caractères accentués
+  * suppression des caractères accentués illicites
 
 ## 0.1.3 - 2026-11-25
 ### Corrections
 - `PC.figure.parametres` : 
   * modification d'une dépendance
   * modification d'un test de concordance des formats de données d'entrée
-  * suppression des caractères accentués
+  * suppression des caractères accentués illicites
 
 ## 0.1.2 - 2026-11-25
 ### Corrections
 - Corrections générales de déclaration du package
 - `BDD.connexion` : correctif de la description
-- `PC.conductivite.25degres` : suppression des caractères accentués
+- `PC.conductivite.25degres` : suppression des caractères accentués illicites
 
 ## 0.1.1 - 2026-11-25
 ### Ajouts

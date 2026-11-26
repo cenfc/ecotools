@@ -95,7 +95,7 @@ chronique.figure.interannuelle <- function(
     if(Ymax == 30) Ymax <- NA
   }
   if(typemesure == "Hydrologie"){
-    legendeY = expression(Débit~(m^3/s))
+    legendeY = expression("Débit"~(m^3/s))
     legendeTitre = "Hydrologie :"
     typemesureTitreSortie = "_hydrologie_"
   }
@@ -112,7 +112,7 @@ chronique.figure.interannuelle <- function(
     typemesureTitreSortie <- "_conductivite_"
   }
   if(typemesure == "Pluviométrie"){
-    legendeY = expression(Précipitations~(L/m^2))
+    legendeY = expression("Précipitations"~(L/m^2))
     legendeTitre = "Pluviométrie :"
     typemesureTitreSortie = "_pluviométrie_"
   }
