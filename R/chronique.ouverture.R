@@ -58,7 +58,6 @@ typedate <- match.arg(typedate)
 typecapteur <- match.arg(typecapteur)
 
 #### Localisation du fichier ####
-if(any(class(Localisation) == "character")) Localisation <- adresse.switch(Localisation)
 if(length(Localisation) > 1) stop(glue("Plusieurs localisations fournies : {glue_collapse(Localisation, sep = ', ', last = ' et ')}"))
 nom_fichier <- str_to_lower(path_ext_remove(path_file(Localisation)))
 
@@ -290,7 +289,7 @@ dataaimporter <-
     station <- stringr::str_extract_all(Localisation, pattern = "[:alnum:]+__", simplify = FALSE)[[1]][1] %>% str_replace("__", "")
     if(nchar(station) == 1){station <- stringr::str_extract_all(Localisation, pattern = "[:alnum:]+-[:alnum:]+__", simplify = FALSE)[[1]][1] %>% str_replace("__", "")}
     
-    Contexte <- readChar(adresse.switch(Localisation), file.info(adresse.switch(Localisation))$size)
+    Contexte <- readChar(Localisation, file.info(Localisation)$size)
     debutData <- str_split(Contexte, pattern = "Record n", simplify = FALSE)[[1]][1] %>% str_count(pattern = "\n")+1
     nData <- str_split(Contexte, pattern = "-----------", simplify = FALSE)[[1]][1] %>% str_count(pattern = "\n")-debutData
     nColonnes <- str_split(Contexte, pattern = "Record n", simplify = FALSE)[[1]][2]

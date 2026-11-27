@@ -51,7 +51,11 @@ chronique.compensation.barometrie <- function(data,
   if(contexte_baro$nunite != 1) stop(glue("Attention : il y a différents unités de barométrie : {contexte_baro$unite}"))
   if(contexte_piezo$nunite != 1) stop(glue("Attention : il y a différents unités de piézométrie : {contexte_piezo$unite}"))
   if(contexte_piezo$unite != contexte_baro$unite) stop(glue("Attention : il y a différentes unités entre piézométrie et barométrie : respectivement {contexte_piezo$unite} et {contexte_baro$unite}"))
-  if(contexte_baro_station$ntypemesure != 1) stop(glue("Présence de plusieurs types de données pour les données de la station barométrique : {contexte_baro_station$typemesure}"))
+  if(contexte_baro$nmesure == 0) stop("Aucune donnée barométrique")
+  if(contexte_piezo$nmesure == 0) stop("Aucune donnée piézométrique")
+  if(contexte_baro_station$nmesure == 0) stop("Aucune donnée relative à la station barométrique")
+  if(contexte_piezo_station$nmesure == 0) stop("Aucune donnée relative aux stations piézométriques")
+  if(contexte_baro_station$ntypemesure > 1) stop(glue("Présence de plusieurs types de données pour les données de la station barométrique : {contexte_baro_station$typemesure}"))
   if(contexte_baro_station$ntypemesure == 1 & contexte_baro_station$typemesure != "Barométrie") stop(glue("Les données de la station barométrique ne sont pas de la barométrie mais {contexte_baro_station$typemesure}"))
   
   # Test du nb de mesures pas uniques #
