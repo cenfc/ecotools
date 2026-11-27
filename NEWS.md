@@ -1,5 +1,14 @@
 # NEWS - ecotools
 
+## 0.1.6 - 2026-11-27
+### Ajouts
+- `chronique.compensation.barometrie` : 
+  * ajout de tests de vérifications
+  * création d'une colonne potentiellement manquante
+
+### Modifications
+- `chronique.ouverture` : suppression de la dépendance à `adresse.switch`
+
 ## 0.1.5 - 2026-11-26
 ### Corrections
 - `chronique.figure` : suppression des caractères accentués illicites

@@ -25,6 +25,10 @@ chronique.compensation.barometrie <- function(data,
   sortie <- match.arg(sortie)
   
   #### Nettoyage et reformatage ####
+  data <- 
+    data %>% 
+    {if(!"id" %in% names(.)) mutate(., id = row_number(), .before = 1) else .}
+  
   data_v2 <-
     data %>% 
     formatage.time() %>% 

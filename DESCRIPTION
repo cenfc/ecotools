@@ -1,6 +1,6 @@
 Package: ecotools
 Title: Tools for Natural Environment Managers
-Version: 0.1.5
+Version: 0.1.6
 Authors@R: 
     person("Jean-Baptiste", "Fagot", , "jean.baptiste.fagot@cen-franchecomte.org", role = c("aut", "cre"))
 Maintainer: Jean-Baptiste Fagot <jean.baptiste.fagot@cen-franchecomte.org>
@@ -70,7 +70,7 @@ Suggests:
     testthat
 Remotes: 
     colinfay/rgeoapi
-Config/roxygen2/version: 8.1.0
+Config/roxygen2/version: 8.1.1
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
